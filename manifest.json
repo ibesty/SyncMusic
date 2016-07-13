@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+    "name": "同步音乐播放",
+    "version": "0.1",
+    "description": "同步你和对方的音乐播放进度，让你们身处不同的位置却能同时听相同的歌",
+    "browser_action": {
+        "default_icon": {
+            "29": "images/icon-29.png",
+            "50": "images/icon-50.png",
+            "167": "images/icon-167.png"
+        },
+        "default_title": "同步音乐播放",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "tabs",
+        "*://music.163.com/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://music.163.com/*"
+            ],
+            "js": [
+                "js/sync_music.js",
+                "js/jquery-3.0.0.min.js"
+            ]
+        }
+    ]
+}
