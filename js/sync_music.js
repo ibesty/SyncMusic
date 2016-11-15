@@ -1,17 +1,18 @@
-function playOnClient(id) {
+function playOnClient(id, type) {       //id为资源id，type为资源类型，17为program电台节目，18为song自有资源
     var playArea = $('#sync-music');
-    var position = $(window.frames['contentFrame'].document).find('body');
+    var position = window.frames['contentFrame'].document.body;
     if (playArea === null) {
-        playArea = document.createElement('span');
+        playArea = document.createElement('span');      //构造可点击对象，模拟播放按钮点击
         playArea.id = 'sync-music';
         playArea.setAttribute('data-res-id', id);
-        playArea.setAttribute('data-res-type', '18');
+        playArea.setAttribute('data-res-type', type);
         playArea.setAttribute('data-res-action', 'play');
     }
     else {
+        playArea.setAttribute('data-res-type', type);
         playArea.setAttribute('data-res-id', id);
     }
-    position[0].appendChild(playArea);
+    position.appendChild(playArea);
     playArea.click();
 }
 
